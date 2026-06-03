@@ -1,8 +1,7 @@
 ﻿using Task4;
-
-Console.WriteLine("Hello, World!");
-List<object> device = new List<object>()
 {
+    List<object> devices = new List<object>()
+    {
     new Oven
     {
         Brand = "Bosch",
@@ -26,11 +25,7 @@ List<object> device = new List<object>()
         Brand = "LG",
         CapacityKg = 9
     }
-};
-
-{
-    List<object> devices = new List<object>();
-
+    };
     // TODO: 
     // Skapa minst fyra objekt: 
     // Washer, Refrigerator, Oven och RobotVacuum. 
