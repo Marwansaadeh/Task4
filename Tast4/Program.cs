@@ -24,7 +24,13 @@
     {
         Brand = "LG",
         CapacityKg = 9
+    },
+    new CoffeeMachine
+    {
+    Brand = "Moccamaster",
+    CupsPerBrew = 8
     }
+
     };
     // TODO: 
     // Skapa minst fyra objekt: 
@@ -130,3 +136,6 @@ static void ReportAllEnergy(List<object> devices)
 
 //5.  Vad händer om du råkar glömma en apparattyp i ReportAllEnergy()?
 // It will not report the energy usage for that device type, and it may lead to incomplete or inaccurate energy reporting.
+
+//.........................
+// När jag lade till CoffeeMachine behövde jag ändra i RunMorningRoutine och ReportAllEnergy metoderna för att inkludera den nya klassen. I RunMorningRoutine behövde jag lägga till en ny else if-sats för att kontrollera om device är av typen CoffeeMachine, och sedan casta det till CoffeeMachine och anropa start och stopp metoderna. I ReportAllEnergy behövde jag också lägga till en else if-sats för att kontrollera om device är av typen CoffeeMachine, och sedan casta det till CoffeeMachine och anropa PrintBrewEnergy metoden.
