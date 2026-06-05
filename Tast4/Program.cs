@@ -139,3 +139,33 @@ static void ReportAllEnergy(List<object> devices)
 
 //.........................
 // När jag lade till CoffeeMachine behövde jag ändra i RunMorningRoutine och ReportAllEnergy metoderna för att inkludera den nya klassen. I RunMorningRoutine behövde jag lägga till en ny else if-sats för att kontrollera om device är av typen CoffeeMachine, och sedan casta det till CoffeeMachine och anropa start och stopp metoderna. I ReportAllEnergy behövde jag också lägga till en else if-sats för att kontrollera om device är av typen CoffeeMachine, och sedan casta det till CoffeeMachine och anropa PrintBrewEnergy metoden.
+
+Console.WriteLine(".........................");
+
+Console.WriteLine("Adding new device to used inhertence");
+Console.WriteLine();
+List<Appliance> newDevices = new List<Appliance>()
+{
+    new Oven("Bosch", "Kitchen"),
+    new Refrigerator("Samsung", "Kitchen"),
+    new RobotVacuum("Roborock", "Living Room"),
+    new Washer("LG", "Laundry Room"),
+    new CoffeeMachine("Moccamaster", "Kitchen")
+};
+
+foreach (Appliance device in newDevices)
+{
+    Console.WriteLine (device.GetInfo());
+    device.TurnOn();
+    Console.WriteLine(device.GetDailyEnergyUsage());
+    device.TurnOff();
+    Console.WriteLine(".........................");
+}
+
+//1.Varför fungerar device.TurnOn() trots att device har typen Appliance? 
+// Because the types(derived classes) is inherited from the base class(Appliance), on the run time it will check the actual type and execute the appropriate method.
+//2.  Vilken metod körs om objektet egentligen är en RobotVacuum? 
+// The TurnOn method of the RobotVacuum, because we override this method, it will check the actual type of the object at runtime and call the appropriate method for that type, even though the variable is of type Appliance.
+//3.  Vad blev bättre jämfört med List<object>?
+// we don't need to check the type of each object and cast it to the correct type before calling the methods, we can directly call the methods defined in the base class and it will automatically call the overridden methods in the derived classes. This makes the code cleaner and more maintainable.
+

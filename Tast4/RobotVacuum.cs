@@ -4,16 +4,37 @@ using System.Text;
 
 namespace Task4
 {
-    public class RobotVacuum
+    public class RobotVacuum : Appliance
     {
         public string Brand { get; set; }
+        public RobotVacuum(string brand, string room) : base(brand, room) {
+            Brand = brand;
+        }
+        public RobotVacuum()
+        {
+            
+        }
+
         public double BatteryLevel { get; set; }
         public void StartCleaning() => Console.WriteLine($"{Brand} Start cleaning.");
         public void StoptCleaning() => Console.WriteLine($"{Brand} stop Cleaning");
         public void PrintCleaningEnergy()
         {
             Console.WriteLine($"{Brand} robot vacuum uses 0.4 kWh per cleaning.");
+        }
+        public override double GetDailyEnergyUsage() => 0.5;
 
+        public override string GetInfo() => $"{Brand} uses {BatteryLevel} kWh per cleaning, It is loocated in {Room}";
+
+        public override void TurnOn()
+        {
+            IsOn = true;
+            StartCleaning();
+        }
+        public override void TurnOff()
+        {
+            IsOn = false;
+            StoptCleaning();
         }
     }
 }
