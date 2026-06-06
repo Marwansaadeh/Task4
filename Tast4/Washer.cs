@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task4
 {
-    public class Washer: Appliance
+    public class Washer: Appliance, ISchedulable
     {
         public Washer(string brand, string room) :base(brand,room)
         {
@@ -12,6 +12,8 @@ namespace Task4
         }
        
         public double CapacityKg { get; set; }
+        public DateTime NextRun { get;  set;}
+
         public void StartWash() =>Console.WriteLine($"{Brand} start washing");
         public void StoptWash() => Console.WriteLine($"{Brand} stop washing");
         public void PrintWashEnergy()
@@ -35,6 +37,25 @@ namespace Task4
         {
             IsOn = false;
             StoptWash();
+        }
+
+        public void Schedule(DateTime time)
+        {
+            if (time <= DateTime.Now)
+            {
+                Console.WriteLine("Scheduled time must be in the future.");
+                return;
+            }
+            else if (IsOn)
+            {
+                Console.WriteLine($"Cannot schedule while the  {GetType().Name} is on.");
+                return;
+            }
+            else
+            {
+                NextRun = time;
+                Console.WriteLine($" {GetType().Name} scheduled to start brewing at {NextRun}.");
+            }
         }
     }
 }

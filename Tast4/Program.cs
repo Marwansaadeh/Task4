@@ -144,14 +144,14 @@ static void ReportAllEnergy(List<object> devices)
 
 //Console.WriteLine("Adding new device to used inhertence");
 //Console.WriteLine();
-//List<Appliance> deveices = new List<Appliance>()
-//{
-//    new Oven("Bosch", "Kitchen"),
-//    new Refrigerator("Samsung", "Kitchen"),
-//    new RobotVacuum("Roborock", "Living Room"),
-//    new Washer("LG", "Laundry Room"),
-//    new CoffeeMachine("Moccamaster", "Kitchen")
-//};
+List<Appliance> deveices = new List<Appliance>()
+{
+    new Oven("Bosch", "Kitchen"),
+    new Refrigerator("Samsung", "Kitchen"),
+    new RobotVacuum("Roborock", "Living Room"),
+    new Washer("LG", "Laundry Room"),
+    new CoffeeMachine("Moccamaster", "Kitchen")
+};
 
 //foreach (Appliance device in deveices)
 //{
@@ -171,12 +171,14 @@ static void ReportAllEnergy(List<object> devices)
 
 SmartHomeController controller = new SmartHomeController();
 
+
+
 // TODO: 
 // Lägg till minst fem olika apparater. 
-//for(int i = 0; i < 4; i++)
-//{
-//    controller.AddDevice(deveices[i]);
-//}
+for (int i = 0; i < 5; i++)
+{
+    controller.AddDevice(deveices[i]);
+}
 
 //controller.PrintStatusReport();
 
@@ -194,11 +196,27 @@ SmartHomeController controller = new SmartHomeController();
 //controller.TurnOffAll();
 
 
-controller.AddDevice(new AirConditioner("Daikin", "Bedroom"));
-controller.AddDevice(new Dishwasher("Bosch", "Kitchen"));
-controller.AddDevice(new Speaker("Sonos", "Living Room"));
-controller.AddDevice(new GamingConsole("Sony", "Living Room"));
+//controller.AddDevice(new AirConditioner("Daikin", "Bedroom"));
+//controller.AddDevice(new Dishwasher("Bosch", "Kitchen"));
+//controller.AddDevice(new Speaker("Sonos", "Living Room"));
+//controller.AddDevice(new GamingConsole("Sony", "Living Room"));
 
 
+controller.ScheduleAllSchedulableDevices(DateTime.Now.AddHours(2));
 
 
+//Frågor efter Del 9 
+//1.  Varför kan vi inte anropa Schedule() direkt på en variabel av typen Appliance?
+// becuase not all variables of type Appliance implement the ISchedulable. not all varibale implement the schedule method.
+
+//2.  Varför fungerar det efter att vi castar till ISchedulable? 
+// because we filter the variable that implemetnt the method.
+
+//3.  Vad betyder det att RobotVacuum både är en Appliance och en ISchedulable? 
+// It meant the robotvacum it implement both properties.  It is type of appliance and implement the interface.
+
+//4.  Varför ska inte Schedule() ligga direkt i Appliance? 
+// beacuse other type is not schedulable. 
+
+//5.  Vad är skillnaden mellan arv och interface i det här exemplet?
+// Inheritance share the common methods between the classes, while interface is a contract that methods and props that must implemented so it fits the specific behavior.

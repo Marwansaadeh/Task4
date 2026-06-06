@@ -56,5 +56,30 @@ namespace Task4
             // Returnera totalsumman. 
             return _devices.Sum(x => x.GetDailyEnergyUsage());
         }
+
+        //public void ScheduleAllDevicesWrong(DateTime time)
+        //{
+        //    foreach (Appliance device in _devices)
+        //    {
+        //        _devices.Schedule(time);
+        //    }
+        //}
+        // the above code doesn't work because _deveice list is the type of Appliance, and doesn't have the schedule method.
+
+        public void ScheduleAllSchedulableDevices(DateTime time)
+        {
+            foreach (Appliance device in _devices)
+            {
+                // TODO: 
+                // 1. Kontrollera om device implementerar ISchedulable. 
+                // 2. Casta device till ISchedulable. 
+                // 3. Anropa Schedule(time). 
+                if (device is ISchedulable schedulable)
+                {
+                    schedulable.Schedule(time);
+                }
+            }
+        }
+
     }
 }
