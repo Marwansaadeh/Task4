@@ -144,14 +144,14 @@ static void ReportAllEnergy(List<object> devices)
 
 //Console.WriteLine("Adding new device to used inhertence");
 //Console.WriteLine();
-List<Appliance> deveices = new List<Appliance>()
-{
-    new Oven("Bosch", "Kitchen"),
-    new Refrigerator("Samsung", "Kitchen"),
-    new RobotVacuum("Roborock", "Living Room"),
-    new Washer("LG", "Laundry Room"),
-    new CoffeeMachine("Moccamaster", "Kitchen")
-};
+//List<Appliance> deveices = new List<Appliance>()
+//{
+//    new Oven("Bosch", "Kitchen"),
+//    new Refrigerator("Samsung", "Kitchen"),
+//    new RobotVacuum("Roborock", "Living Room"),
+//    new Washer("LG", "Laundry Room"),
+//    new CoffeeMachine("Moccamaster", "Kitchen")
+//};
 
 //foreach (Appliance device in deveices)
 //{
@@ -173,23 +173,32 @@ SmartHomeController controller = new SmartHomeController();
 
 // TODO: 
 // Lägg till minst fem olika apparater. 
-for(int i = 0; i < 4; i++)
-{
-    controller.AddDevice(deveices[i]);
-}
+//for(int i = 0; i < 4; i++)
+//{
+//    controller.AddDevice(deveices[i]);
+//}
 
-controller.PrintStatusReport();
+//controller.PrintStatusReport();
 
-Console.WriteLine();
+//Console.WriteLine();
 
-controller.TurnOnAll();
+//controller.TurnOnAll();
 
-Console.WriteLine();
+//Console.WriteLine();
 
-double totalEnergy = controller.GetTotalDailyEnergyUsage();
-Console.WriteLine($"Total daily energy usage: {totalEnergy} kWh");
+//double totalEnergy = controller.GetTotalDailyEnergyUsage();
+//Console.WriteLine($"Total daily energy usage: {totalEnergy} kWh");
 
-Console.WriteLine();
+//Console.WriteLine();
 
-controller.TurnOffAll();
+//controller.TurnOffAll();
+
+
+controller.AddDevice(new AirConditioner("Daikin", "Bedroom"));
+controller.AddDevice(new Dishwasher("Bosch", "Kitchen"));
+controller.AddDevice(new Speaker("Sonos", "Living Room"));
+controller.AddDevice(new GamingConsole("Sony", "Living Room"));
+
+
+
 
