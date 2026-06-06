@@ -7,10 +7,9 @@ namespace Task4
     public class Refrigerator : Appliance
     {
         public Refrigerator(string brand, string room) : base(brand, room) {
-            Brand = brand;
+            
         }
-        public Refrigerator() { }
-        public string Brand { get; set; }
+        
         public double Temperature { get; set; }
         public void StartCooling() => Console.WriteLine($"{Brand} Start cooling");
         public void StoptCooling() => Console.WriteLine($"{Brand} stop cooling");
@@ -21,7 +20,11 @@ namespace Task4
         }
         public override double GetDailyEnergyUsage() => 3.9;
 
-        public override string GetInfo() => $"{Brand} refrigerator {Temperature} kWh per day, It is loocated in {Room}";
+        public override string GetInfo()
+        {
+            Temperature = 3.6;
+            return $"{Temperature} {base.GetInfo()}";
+        }
 
         public override void TurnOn()
         {

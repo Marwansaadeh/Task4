@@ -6,15 +6,11 @@ namespace Task4
 {
     public class Washer: Appliance
     {
-        public string Brand { get; set; }
         public Washer(string brand, string room) :base(brand,room)
         {
-            Brand = brand;
+           
         }
-        public Washer()
-        {
-            
-        }
+       
         public double CapacityKg { get; set; }
         public void StartWash() =>Console.WriteLine($"{Brand} start washing");
         public void StoptWash() => Console.WriteLine($"{Brand} stop washing");
@@ -24,7 +20,11 @@ namespace Task4
         }
         public override double GetDailyEnergyUsage() => 1.2;
        
-        public override string GetInfo()=> $"{Brand} with capacity {CapacityKg} kg,It is loocated in {Room}";
+        public override string GetInfo()
+        {
+            CapacityKg = 1.2;
+            return $"{CapacityKg} {base.GetInfo()}";
+        } 
         
         public override void TurnOn()
         {

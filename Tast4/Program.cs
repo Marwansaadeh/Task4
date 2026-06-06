@@ -1,47 +1,47 @@
 ﻿using Task4;
 {
-    List<object> devices = new List<object>()
-    {
-    new Oven
-    {
-        Brand = "Bosch",
-        MaxTemperature = 275.0
-    },
+    //List<object> devices = new List<object>()
+    //{
+    //new Oven
+    //{
+    //    Brand = "Bosch",
+    //    MaxTemperature = 275.0
+    //},
 
-    new Refrigerator
-    {
-        Brand = "Samsung",
-        Temperature = 4.0
-    },
+    //new Refrigerator
+    //{
+    //    Brand = "Samsung",
+    //    Temperature = 4.0
+    //},
 
-    new RobotVacuum
-    {
-        Brand = "Roborock",
-        BatteryLevel = 85
-    },
+    //new RobotVacuum
+    //{
+    //    Brand = "Roborock",
+    //    BatteryLevel = 85
+    //},
 
-    new Washer
-    {
-        Brand = "LG",
-        CapacityKg = 9
-    },
-    new CoffeeMachine
-    {
-    Brand = "Moccamaster",
-    CupsPerBrew = 8
-    }
+    //new Washer
+    //{
+    //    Brand = "LG",
+    //    CapacityKg = 9
+    //},
+    //new CoffeeMachine
+    //{
+    //Brand = "Moccamaster",
+    //CupsPerBrew = 8
+    //}
 
-    };
+    //};
     // TODO: 
     // Skapa minst fyra objekt: 
     // Washer, Refrigerator, Oven och RobotVacuum. 
     // Lägg till dem i listan devices. 
 
-    RunMorningRoutine(devices);
+    //RunMorningRoutine(devices);
 
-    Console.WriteLine();
+    //Console.WriteLine();
 
-    ReportAllEnergy(devices);
+    //ReportAllEnergy(devices);
 }
 
 static void RunMorningRoutine(List<object> devices)
@@ -144,7 +144,7 @@ Console.WriteLine(".........................");
 
 Console.WriteLine("Adding new device to used inhertence");
 Console.WriteLine();
-List<Appliance> newDevices = new List<Appliance>()
+List<Appliance> deveices = new List<Appliance>()
 {
     new Oven("Bosch", "Kitchen"),
     new Refrigerator("Samsung", "Kitchen"),
@@ -153,7 +153,7 @@ List<Appliance> newDevices = new List<Appliance>()
     new CoffeeMachine("Moccamaster", "Kitchen")
 };
 
-foreach (Appliance device in newDevices)
+foreach (Appliance device in deveices)
 {
     Console.WriteLine (device.GetInfo());
     device.TurnOn();

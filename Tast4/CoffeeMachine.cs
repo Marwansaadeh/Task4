@@ -6,13 +6,7 @@ namespace Task4
 {
     public class CoffeeMachine : Appliance
     {
-        public string Brand { get; set; }
         public CoffeeMachine(string brand, string room) : base(brand, room) {
-            Brand = brand;
-        }
-        public CoffeeMachine()
-        {
-            
         }
         public double CupsPerBrew { get; set; }
         public void StartBrewing() => Console.WriteLine("Startar kaffebryggning ");
@@ -20,8 +14,11 @@ namespace Task4
         public void PrintBrewingEnergy() => Console.WriteLine($"Energiförbrukning: {CupsPerBrew} Wh");
         public override double GetDailyEnergyUsage() => 1.2;
 
-        public override string GetInfo() => $"{Brand} Energiförbrukning {CupsPerBrew} Wh, It is loocated in {Room}";
-
+        public override string GetInfo()
+        {
+            CupsPerBrew = 0.3;
+            return $"{CupsPerBrew} {base.GetInfo()}";
+        }
         public override void TurnOn()
         {
             IsOn = true;

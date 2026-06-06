@@ -6,15 +6,10 @@ namespace Task4
 {
     public class RobotVacuum : Appliance
     {
-        public string Brand { get; set; }
         public RobotVacuum(string brand, string room) : base(brand, room) {
-            Brand = brand;
+           
         }
-        public RobotVacuum()
-        {
-            
-        }
-
+       
         public double BatteryLevel { get; set; }
         public void StartCleaning() => Console.WriteLine($"{Brand} Start cleaning.");
         public void StoptCleaning() => Console.WriteLine($"{Brand} stop Cleaning");
@@ -24,8 +19,11 @@ namespace Task4
         }
         public override double GetDailyEnergyUsage() => 0.5;
 
-        public override string GetInfo() => $"{Brand} uses {BatteryLevel} kWh per cleaning, It is loocated in {Room}";
-
+        public override string GetInfo()
+        {
+            BatteryLevel = 0.4;
+            return $"{BatteryLevel} {base.GetInfo()}";
+        }
         public override void TurnOn()
         {
             IsOn = true;
