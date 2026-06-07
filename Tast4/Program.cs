@@ -220,3 +220,22 @@ controller.ScheduleAllSchedulableDevices(DateTime.Now.AddHours(2));
 
 //5.  Vad är skillnaden mellan arv och interface i det här exemplet?
 // Inheritance share the common methods between the classes, while interface is a contract that methods and props that must implemented so it fits the specific behavior.
+
+
+
+SmartLamp lamp1 = new SmartLamp("IKEA", "Hallway", 80);
+Appliance lamp2 = lamp1;
+lamp1.TurnOn();
+lamp2.TurnOn();
+
+// del 11
+//1.Blir utskriften samma? 
+//No, lamp1 will call the TurnOn method of SmartLamp(I used new, means hide the base class method), while lamp2 will call the TurnOn method of Appliance, because lamp2 is of type Appliance and it will call the method defined in the base class, not the overridden method in the derived class.
+//2.  Vilken metod körs när variabeln har typen SmartLamp? 
+//lapm1 will call the TurnOn method of SmartLamp, because it is of type SmartLamp and it will call the method defined in the SmartLamp class.
+//3.  Vilken metod körs när variabeln har typen Appliance? 
+// base class method, because it is of type Appliance and it will call the method defined in the Appliance class, not the overridden method in the SmartLamp class.
+//4.  Varför är detta farligt eller förvirrande? 
+//becase when I loop through a list of Appliance and call the TurnOn method, it will call the base class method instead of the overridden method in the SmartLamp class, and gives a bug.
+//5.  Vad händer om du byter new till override?
+// If I change new to override, then both lamp1 and lamp2 will call the TurnOn method of SmartLamp, because it will override the base class method and it will call the method defined in the SmartLamp class.
