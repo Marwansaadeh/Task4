@@ -31,7 +31,7 @@ namespace Task4
             return $"{Brand} in {Room}";
         }
 
-        public virtual void TurnOn()
+        public void TurnOn()
         {
             // TODO: 
             // Sätt IsOn till true. 
@@ -39,6 +39,7 @@ namespace Task4
             IsOn = true;
             Console.WriteLine($"Turning on {Brand} in {Room}.");
         }
+        // when I change from vitual to non-virtual, I get a compile error in the child class because it is trying to override a non-virtual method.
 
         public virtual void TurnOff()
         {

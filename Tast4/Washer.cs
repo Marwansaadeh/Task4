@@ -26,13 +26,14 @@ namespace Task4
         {
             CapacityKg = 1.2;
             return $"{CapacityKg} {base.GetInfo()}";
-        } 
-        
-        public override void TurnOn()
+        }
+
+        public void TurnOn()
         {
             IsOn = true;
             StartWash();
         }
+        // It give me warining that this hides the inherited member from base class.The c# understand that I am hiding the base class method and want to use the derived class method, wants me to know what I am doing.
         public override void TurnOff()
         {
             IsOn = false;
