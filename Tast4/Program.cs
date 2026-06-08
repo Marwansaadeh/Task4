@@ -1,4 +1,6 @@
-﻿using Task4;
+﻿using System.Reflection.PortableExecutable;
+using System.Timers;
+using Task4;
 {
     //List<object> devices = new List<object>()
     //{
@@ -239,3 +241,28 @@ lamp2.TurnOn();
 //becase when I loop through a list of Appliance and call the TurnOn method, it will call the base class method instead of the overridden method in the SmartLamp class, and gives a bug.
 //5.  Vad händer om du byter new till override?
 // If I change new to override, then both lamp1 and lamp2 will call the TurnOn method of SmartLamp, because it will override the base class method and it will call the method defined in the SmartLamp class.
+
+
+
+
+List<ISchedulable> schedulableDevices = controller.GetSchedulableDevices();
+foreach (ISchedulable schedulable in schedulableDevices)
+{
+    DateTime date = schedulable.NextRun;
+    Console.WriteLine(date.ToString());
+
+}
+// Varför kan listan vara List<ISchedulable> även om objekten egentligen är olika klasser? 
+//because I already checked if the device is Implement ISchedulable interface.
+
+
+Appliance foundDevice = controller.FindDeviceByBrand("LG");
+if (foundDevice != null)
+{
+    if (foundDevice is ISchedulable schedulable)
+    {
+        schedulable.Schedule(DateTime.Now.AddHours(2));
+    }
+    foundDevice.TurnOn();
+}
+//Om apparaten också är ISchedulable, schemalägg den. Du måste då kombinera Appliance med ISchedulable.

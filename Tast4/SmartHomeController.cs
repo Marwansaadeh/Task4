@@ -80,6 +80,26 @@ namespace Task4
                 }
             }
         }
+        internal List<ISchedulable> GetSchedulableDevices()
+        {
+
+            List<ISchedulable> result = new List<ISchedulable>();
+            foreach (Appliance device in _devices)
+            {
+                // TODO: 
+                // Om device implementerar ISchedulable, 
+                // lägg till det i result. 
+                if(device is ISchedulable schedulable)
+                result.Add(schedulable);
+            }
+            return result;
+        }
+
+        public Appliance FindDeviceByBrand(string brand)
+        {
+            return _devices.FirstOrDefault(x => x.Brand == brand) 
+            ?? throw new KeyNotFoundException($"No device found with brand '{brand}'.");
+        }
 
     }
 }
