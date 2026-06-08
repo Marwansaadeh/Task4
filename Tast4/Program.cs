@@ -152,7 +152,8 @@ List<Appliance> deveices = new List<Appliance>()
     new Refrigerator("Samsung", "Kitchen"),
     new RobotVacuum("Roborock", "Living Room"),
     new Washer("LG", "Laundry Room"),
-    new CoffeeMachine("Moccamaster", "Kitchen")
+    new CoffeeMachine("Moccamaster", "Kitchen"),
+    new AirConditioner("Daikin", "Bedroom")
 };
 
 //foreach (Appliance device in deveices)
@@ -177,25 +178,28 @@ SmartHomeController controller = new SmartHomeController();
 
 // TODO: 
 // Lägg till minst fem olika apparater. 
-for (int i = 0; i < 5; i++)
+for (int i = 0; i < 6; i++)
 {
     controller.AddDevice(deveices[i]);
 }
 
-//controller.PrintStatusReport();
+Console.WriteLine("Status report:");
 
-//Console.WriteLine();
+controller.PrintStatusReport();
 
-//controller.TurnOnAll();
+Console.WriteLine();
 
-//Console.WriteLine();
+controller.TurnOnAll();
 
-//double totalEnergy = controller.GetTotalDailyEnergyUsage();
-//Console.WriteLine($"Total daily energy usage: {totalEnergy} kWh");
+Console.WriteLine();
 
-//Console.WriteLine();
+double totalEnergy = controller.GetTotalDailyEnergyUsage();
+Console.WriteLine($"Total daily energy usage: {totalEnergy} kWh");
 
-//controller.TurnOffAll();
+Console.WriteLine();
+
+controller.TurnOffAll();
+Console.WriteLine("End report");
 
 
 //controller.AddDevice(new AirConditioner("Daikin", "Bedroom"));
@@ -266,3 +270,7 @@ if (foundDevice != null)
     foundDevice.TurnOn();
 }
 //Om apparaten också är ISchedulable, schemalägg den. Du måste då kombinera Appliance med ISchedulable.
+
+
+
+
