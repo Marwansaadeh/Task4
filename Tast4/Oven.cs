@@ -24,7 +24,7 @@ namespace Task4
             MaxTemperature = 2.5;
             return $"{MaxTemperature} {base.GetInfo()}";
         }
-        public override void TurnOn()
+        public sealed override void TurnOn()
         {
             IsOn = true;
             StartHeating();
